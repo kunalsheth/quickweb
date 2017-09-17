@@ -9,8 +9,8 @@ apply plugin: 'org.jetbrains.kotlin.jvm'
 
 repositories.jcenter()
 dependencies {
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8'
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect'
+    compileOnly group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8'
+    compileOnly group: 'org.jetbrains.kotlin', name: 'kotlin-reflect'
 
     compile group: 'org.pac4j', name: 'pac4j-http', version: '2.0.0'
     compile group: 'org.pac4j', name: 'spark-pac4j', version: '2.0.0'
