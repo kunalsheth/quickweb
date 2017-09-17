@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/quickweb.iml" filepath="$PROJECT_DIR$/.idea/modules/quickweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/quickweb_main.iml" filepath="$PROJECT_DIR$/.idea/modules/quickweb_main.iml" group="quickweb" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/quickweb_test.iml" filepath="$PROJECT_DIR$/.idea/modules/quickweb_test.iml" group="quickweb" />
     </modules>
   </component>
 </project>

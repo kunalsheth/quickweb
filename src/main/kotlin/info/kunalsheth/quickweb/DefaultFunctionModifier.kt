@@ -1,5 +1,7 @@
 package info.kunalsheth.quickweb
 
+import info.kunalsheth.quickweb.content.Data
+import info.kunalsheth.quickweb.content.Page
 import info.kunalsheth.quickweb.content.extension.login.profileManager
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
@@ -8,7 +10,7 @@ import spark.kotlin.RouteHandler
 /**
  * Created by kunal on 7/7/17.
  */
-val pageFunctionModifier: info.kunalsheth.quickweb.QW_Config.() -> info.kunalsheth.quickweb.content.Page.() -> RouteHandler.() -> String = {
+val pageFunctionModifier: QW_Config.() -> Page.() -> RouteHandler.() -> String = {
     {
         {
             type(mime.type)
@@ -81,7 +83,7 @@ val pageFunctionModifier: info.kunalsheth.quickweb.QW_Config.() -> info.kunalshe
     }
 }
 
-val dataFunctionModifier: info.kunalsheth.quickweb.QW_Config.() -> info.kunalsheth.quickweb.content.Data.() -> RouteHandler.() -> ByteArray = {
+val dataFunctionModifier: QW_Config.() -> Data.() -> RouteHandler.() -> ByteArray = {
     {
         {
             type(mime.type)

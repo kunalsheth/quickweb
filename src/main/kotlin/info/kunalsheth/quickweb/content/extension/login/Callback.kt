@@ -1,5 +1,6 @@
 package info.kunalsheth.quickweb.content.extension.login
 
+import info.kunalsheth.quickweb.QW_Config
 import info.kunalsheth.quickweb.content.Page
 import info.kunalsheth.quickweb.content.QW_HTML
 import org.pac4j.core.config.Config
@@ -13,7 +14,7 @@ import spark.kotlin.RouteHandler
 class Callback(pac4jConfig: Config) : Page() {
     val callbackRoute = CallbackRoute(pac4jConfig)
 
-    override fun install(config: info.kunalsheth.quickweb.QW_Config) {
+    override fun install(config: QW_Config) {
         get(route, callbackRoute)
         post(route, callbackRoute)
         put(route, callbackRoute)
@@ -22,5 +23,5 @@ class Callback(pac4jConfig: Config) : Page() {
     }
 
     override val method = RequestMethod.ANY
-    override val function: info.kunalsheth.quickweb.QW_Config.() -> RouteHandler.() -> QW_HTML = { { {} } }
+    override val function: QW_Config.() -> RouteHandler.() -> QW_HTML = { { {} } }
 }

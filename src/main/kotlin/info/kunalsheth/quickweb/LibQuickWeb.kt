@@ -1,5 +1,6 @@
 package info.kunalsheth.quickweb
 
+import info.kunalsheth.quickweb.content.QW_Object
 import spark.kotlin.port
 import spark.kotlin.secure
 
@@ -7,7 +8,7 @@ import spark.kotlin.secure
  * Created by kunal on 7/12/17.
  */
 object LibQuickWeb {
-    fun start(config: info.kunalsheth.quickweb.QW_Config, vararg content: info.kunalsheth.quickweb.content.QW_Object) = config.run {
+    fun start(config: QW_Config, vararg content: QW_Object) = config.run {
         port(port)
 
         if (keystore != null && keystorePassword != null) {
@@ -25,7 +26,7 @@ object LibQuickWeb {
                 config.login.signUp,
                 config.login.callback,
                 config.login.logout
-        ) else emptySet<info.kunalsheth.quickweb.content.QW_Object>()
+        ) else emptySet<QW_Object>()
 
         (config.navBarPages + config.footerPages + loginPages + content)
                 .distinct()

@@ -1,5 +1,9 @@
 package info.kunalsheth.quickweb.content.extension
 
+import info.kunalsheth.quickweb.MIME
+import info.kunalsheth.quickweb.QW_Config
+import info.kunalsheth.quickweb.content.Data
+import info.kunalsheth.quickweb.content.QW_Object
 import spark.kotlin.RouteHandler
 
 /**
@@ -7,8 +11,8 @@ import spark.kotlin.RouteHandler
  */
 class Favicon(
         pngData: ByteArray = ClassLoader.getSystemClassLoader().getResourceAsStream("favicon.ico").readBytes()
-) : info.kunalsheth.quickweb.content.Data() {
-    override val method = RequestMethod.GET
-    override val mime = info.kunalsheth.quickweb.MIME.`image png`
-    override val function: info.kunalsheth.quickweb.QW_Config.() -> RouteHandler.() -> ByteArray = { { pngData } }
+) : Data() {
+    override val method = QW_Object.RequestMethod.GET
+    override val mime = MIME.`image png`
+    override val function: QW_Config.() -> RouteHandler.() -> ByteArray = { { pngData } }
 }

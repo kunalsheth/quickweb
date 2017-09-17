@@ -1,6 +1,10 @@
 package info.kunalsheth.quickweb.content.extension.login
 
+import info.kunalsheth.quickweb.QW_Config
+import info.kunalsheth.quickweb.content.Page
 import info.kunalsheth.quickweb.content.QW_HTML
+import info.kunalsheth.quickweb.content.Resource
+import info.kunalsheth.quickweb.content.extension.SimplePage
 import kotlinx.html.*
 import org.pac4j.core.context.Pac4jConstants
 import org.pac4j.core.credentials.UsernamePasswordCredentials
@@ -15,7 +19,7 @@ import spark.kotlin.RouteHandler
 /**
  * Created by kunal on 7/16/17.
  */
-abstract class Login : info.kunalsheth.quickweb.content.extension.SimplePage() {
+abstract class Login : SimplePage() {
 
     open val client = {
         FormClient(route, { credentials, context ->
@@ -33,20 +37,20 @@ abstract class Login : info.kunalsheth.quickweb.content.extension.SimplePage() {
     }()
 
     open val callback = {
-        val callback = info.kunalsheth.quickweb.content.extension.login.Callback(pac4jConfig)
+        val callback = Callback(pac4jConfig)
         pac4jConfig.clients.callbackUrl = callback.route
         callback
     }()
 
     open val logout = Logout(pac4jConfig)
 
-    abstract val signUp: info.kunalsheth.quickweb.content.Page
-    abstract val forgotPassword: info.kunalsheth.quickweb.content.Page
+    abstract val signUp: Page
+    abstract val forgotPassword: Page
 
     abstract val authenticate: RouteHandler.(UsernamePasswordCredentials) -> CommonProfile
-    abstract val authorizers: Map<info.kunalsheth.quickweb.content.Resource, RouteHandler.(Collection<CommonProfile?>) -> Boolean>
+    abstract val authorizers: Map<Resource, RouteHandler.(Collection<CommonProfile?>) -> Boolean>
 
-    override fun install(config: info.kunalsheth.quickweb.QW_Config) {
+    override fun install(config: QW_Config) {
         super.install(config)
 
         authorizers.forEach { (resource, authorizer) ->
@@ -65,7 +69,7 @@ abstract class Login : info.kunalsheth.quickweb.content.extension.SimplePage() {
         }
     }
 
-    override val content: info.kunalsheth.quickweb.QW_Config.() -> RouteHandler.() -> QW_HTML = {
+    override val content: QW_Config.() -> RouteHandler.() -> QW_HTML = {
         {
             {
                 div {
